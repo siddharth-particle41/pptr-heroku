@@ -6,9 +6,7 @@ const scrapeLogic = async (res) => {
   const browser = await puppeteer.launch({
     args:[
         "--no-sandbox",
-        "--disable-setuid-sandbox",
-        "--single-process",
-        "--no-zygote"
+        "--disable-setuid-sandbox"
     ],
     executablePath: process.env.NODE_ENV === "production" 
     ? process.env.PUPPETEER_EXECUTABLE_PATH
@@ -40,13 +38,14 @@ const scrapeLogic = async (res) => {
     // Print the full title
     const logStatement = `${fullTitle}`;
     console.log(logStatement);
+    res.send(logStatement);
   } catch (e) {
     console.error(e);
     res.send(`Something went wrong while launching puppeteer: ${e}`);
   } finally {
     await browser.close();
   }
-  res.send(logStatement);
+ 
 };
 
 module.exports = { scrapeLogic };
