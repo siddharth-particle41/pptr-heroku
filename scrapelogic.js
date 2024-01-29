@@ -11,7 +11,7 @@ const scrapeLogic = async (res) => {
         ],
     executablePath: process.env.NODE_ENV === "production" 
         ? process.env.PUPPETEER_EXECUTABLE_PATH
-        :"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",     
+        :puppeteer.executablePath(),     
 });
   try {
     const page = await browser.newPage();

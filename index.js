@@ -1,5 +1,6 @@
 const express = require("express");
 const { financeScrapper } = require("./financeScrapper");
+const { scrapeLogic } = require("./scrapelogic");
 const app = express();
 
 const PORT = process.env.PORT || 4000
